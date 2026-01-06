@@ -154,9 +154,13 @@ const Home = () => {
   const fetchFeaturedProperties = async () => {
     try {
       const res = await axios.get(`${API_URL}/properties?status=Available`);
-      setFeaturedProperties(res.data.slice(0, 3));
+      console.log('API Response:', res.data); // Debug log
+      // Ensure res.data is an array before setting state
+      const properties = Array.isArray(res.data) ? res.data : [];
+      setFeaturedProperties(properties.slice(0, 3));
     } catch (error) {
       console.error('Error fetching properties:', error);
+      setFeaturedProperties([]); // Set empty array on error
     }
   };
 
@@ -207,9 +211,11 @@ const AllProperties = () => {
         url += `?type=${filter}`;
       }
       const res = await axios.get(url);
-      setProperties(res.data);
+      const properties = Array.isArray(res.data) ? res.data : [];
+      setProperties(properties);
     } catch (error) {
       console.error('Error fetching properties:', error);
+      setProperties([]);
     }
     setLoading(false);
   };
@@ -459,9 +465,11 @@ const Dashboard = () => {
   const fetchProperties = async () => {
     try {
       const res = await axios.get(`${API_URL}/properties`);
-      setProperties(res.data);
+      const properties = Array.isArray(res.data) ? res.data : [];
+      setProperties(properties);
     } catch (error) {
       console.error('Error fetching properties:', error);
+      setProperties([]);
     }
   };
 
