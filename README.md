@@ -1,5 +1,7 @@
 # PrimeSpace - Real Estate Property Management System
 
+[Working prototype](https://primespace.netlify.app/)
+
 A full-stack MERN (MongoDB, Express.js, React.js, Node.js) web application for managing real estate property listings. Built for efficient property management with complete CRUD operations and user authentication.
 
 ---
