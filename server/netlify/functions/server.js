@@ -2,10 +2,11 @@ const express = require('express');
 const serverless = require('serverless-http');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const path = require('path');
 const connectDB = require('../../config/db');
 
-// Load env vars
-dotenv.config();
+// Load env vars - use explicit path for serverless environment
+dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 
 // Connect to database
 connectDB();
